@@ -1,0 +1,30 @@
+set serveroutput on;
+
+create table dance(id_dance integer, nombre varchar2(20),
+edad integer,
+constraint pk_id_dance primary key(id_dance));
+insert into dance values(1,'juan',16);
+insert into dance values(2,'pedro',20);
+insert into dance values(3,'luis',45);
+insert into dance values(4,'jose',700);
+--debemos de hacer un select
+select * from dance;
+
+declare
+estatus varchar2(20);
+--delcaracion del cursor
+cursor cur1 IS select * from dance;
+
+BEGIN
+for rec IN cur1 LOOP
+IF rec.edad<18 THEN
+estatus :='precoz';
+dbms_output.put_line(' nombre '||rec.nombre||' edad '||rec.edad||' estatus '||estatus);
+
+ELSE
+estatus:='viejo';
+dbms_output.put_line('nombre '||rec.nombre||' edad '||rec.edad||' estatus '||estatus);
+END IF;
+END LOOP;
+END;
+/
