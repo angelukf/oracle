@@ -1,0 +1,19 @@
+set serveroutput on;
+
+create table trabajador(seguro integer,nombre varchar2(20),edad integer
+           constraint pk_seguro primary key (seguro));
+           
+  
+  
+  create table nomina (id_nomina integer,seguro integer, sueldo_base float,
+              horas_laboradas integer, fecha_pago date,
+              constraint pk_id nomina primary key (id_nomina),
+              constraint fk1_seguro foreign key(seguro));
+              
+  
+  insert into trabajador values(1,'ana',28);
+  insert into trabajador values(2,'pedro',40);
+  insert into trabajador values(3,'juan',35);
+  insert into trabajador values(4,'karla'48);
+  
+  insert into nomina values(1,1,
